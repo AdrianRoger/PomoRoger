@@ -1,0 +1,9 @@
+.btn{
+    color: rgb(48, 48, 48);
+    cursor: pointer;
+    display: inline;
+}
+
+.btn:hover{
+    color: rgb(189, 89, 31);
+}

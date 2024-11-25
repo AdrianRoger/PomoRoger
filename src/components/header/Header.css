@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 1rem;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(236, 195, 11),
+    rgb(151, 118, 27)
+  );
+  user-select: none;
+}
+
+.navigate-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+h3 {
+  text-decoration: overline underline;
+}

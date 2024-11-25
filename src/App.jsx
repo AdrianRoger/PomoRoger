@@ -1,11 +1,19 @@
-import './App.css';
-import { } from 'react'
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Settings from "./pages/settings/Settings";
+import Header from "./components/header/Header";
 
 function App() {
-
   return (
-     <h1>Hello World</h1>
-  )
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
