@@ -18,5 +18,5 @@ body {
   display: flex;
   max-width: 768px;
   flex-direction: column;
-  background-color: blueviolet;
+  background-color: rgb(177, 177, 177);
 }
