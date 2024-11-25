@@ -1,0 +1,22 @@
+/* reset.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  max-width: 768px;
+  flex-direction: column;
+  background-color: blueviolet;
+}
