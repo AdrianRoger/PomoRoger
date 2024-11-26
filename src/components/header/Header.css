@@ -2,13 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.2rem 0.3rem 0.5rem;
   background-image: linear-gradient(
     to bottom,
     rgb(236, 195, 11),
     rgb(151, 118, 27)
   );
   user-select: none;
+  -webkit-app-region: drag;
 }
 
 .navigate-buttons {

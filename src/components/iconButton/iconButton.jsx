@@ -1,8 +1,8 @@
 import "./iconButton.css";
 
-const IconButton = ({ children, handlerClick }) => {
+const IconButton = ({ children, handleClick }) => {
   return (
-    <div className="btn" onClick={handlerClick}>
+    <div className="btn" onClick={handleClick}>
       {children}
     </div>
   );

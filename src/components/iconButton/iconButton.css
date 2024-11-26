@@ -2,6 +2,7 @@
     color: rgb(48, 48, 48);
     cursor: pointer;
     display: inline;
+    -webkit-app-region: no-drag;
 }
 
 .btn:hover{
