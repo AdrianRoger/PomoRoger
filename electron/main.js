@@ -8,12 +8,17 @@ const __dirname = dirname(__filename);
 config();
 
 const createWindow = () => {
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+  let oldSize = 768;
+
   try {
     const mainWindow = new BrowserWindow({
-      width: 800,
-      // maxWidth: 768,
+      width: 768,
       height: 600,
       frame: false,
+      resizable: false,
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
         contextIsolation: true,
@@ -25,15 +30,12 @@ const createWindow = () => {
     Menu.setApplicationMenu(null);
 
     if (process.env.NODE_ENV === "development") {
-      mainWindow.webContents.openDevTools();
+      // mainWindow.webContents.openDevTools();
       mainWindow.loadURL("http://localhost:5173");
     } else {
       mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));
     }
 
-    let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
 
     ipcMain.on("start-drag", (event, clientX, clientY) => {
       // Start dragging
@@ -64,6 +66,31 @@ const createWindow = () => {
       // Stop dragging
       isDragging = false;
     });
+
+    ipcMain.on("resize-large", () => {
+      const size = 768;
+      oldSize = size;
+      mainWindow.setBounds({width: size, height: 600});
+    });
+
+    ipcMain.on("resize-medium", () => {
+      const size = 425;
+      oldSize = size;
+      mainWindow.setBounds({width: size, height: 600});
+    });
+
+    ipcMain.on("resize-small", () => {
+      mainWindow.setBounds({width: 300, height: 200});
+    });
+    
+    ipcMain.on("resize-restore", () => {
+      mainWindow.setBounds({width: oldSize, height: 600});
+    });
+
+    ipcMain.on("minimize-app", () => {
+      mainWindow.minimize();
+    });
+
   } catch (error) {
     console.log(`Error:: ${error.message}`);
   }

@@ -8,4 +8,9 @@ contextBridge.exposeInMainWorld('electron', {
   startDrag: (clientX, clientY) => ipcRenderer.send("start-drag", clientX, clientY),
   moveDrag: (clientX, clientY) => ipcRenderer.send("drag-move", clientX, clientY),
   stopDrag: () => ipcRenderer.send("stop-drag"),
+  setSizeLarge: () => ipcRenderer.send('resize-large'),
+  setSizeMedium: () => ipcRenderer.send('resize-medium'),
+  setSizeSmall: () => ipcRenderer.send('resize-small'),
+  setSizeRestore: () => ipcRenderer.send('resize-restore'),
+  setMinimized: () => ipcRenderer.send('minimize-app'),
 });

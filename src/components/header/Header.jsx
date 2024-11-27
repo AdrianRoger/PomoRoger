@@ -4,19 +4,24 @@ import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import IconButton from "../iconButton/iconButton";
+//Resize imports
+import CloseFullscreenRoundedIcon from "@mui/icons-material/CloseFullscreenRounded";
+import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
+import FullscreenExitRoundedIcon from "@mui/icons-material/FullscreenExitRounded";
+import MinimizeRoundedIcon from "@mui/icons-material/MinimizeRounded";
+import OpenInFullRoundedIcon from '@mui/icons-material/OpenInFullRounded';
 import "./Header.css";
 
 const Header = () => {
   const [isDragging, setIsDragging] = useState(false);
-  // const [initialClientX, setInitialClientX] = useState(0);
-  // const [initialClientY, setInitialClientY] = useState(0);
+  const [isLargeSize, setIsLargeSize] = useState(true);
+  const [isSmallSize, setIsSmallSize] = useState(false);
+  const iconSize = {fontSize:"18px"};
 
   const navigate = useNavigate();
 
   const handleMouseDown = (e) => {
     setIsDragging(true);
-    // setInitialClientX(e.clientX);
-    // setInitialClientY(e.clientY);
     window.electron.startDrag(e.clientX, e.clientY);
   };
 
@@ -38,6 +43,27 @@ const Header = () => {
   const handleCloseApplication = () => {
     window.electron.closeApp();
   };
+  const handleMinimezeApp = () => {
+    window.electron.setMinimized();
+  }
+
+  const handleResizeLarge = () => {
+    window.electron.setSizeLarge();
+    setIsLargeSize(true);
+  }
+  const handleResizeMedium = () => {
+    window.electron.setSizeMedium();
+    setIsLargeSize(false);
+  }
+  const handleResizeSmall = () => {
+    window.electron.setSizeSmall();
+    setIsSmallSize(true);
+  }
+  const handleResizeRestore = () => {
+    window.electron.setSizeRestore();
+    setIsSmallSize(false);
+  }// It Need To Implement
+
 
   return (
     <header
@@ -47,18 +73,40 @@ const Header = () => {
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <h3>PomoRoger</h3>
-      <div className="navigate-buttons">
+      {!isSmallSize && <div className="navigate-buttons">
         <IconButton
-          children={<HomeRoundedIcon />}
+          children={<HomeRoundedIcon sx={iconSize}/>}
           handleClick={() => handleNavigate("/")}
         />
         <IconButton
-          children={<SettingsRoundedIcon />}
+          children={<SettingsRoundedIcon sx={iconSize}/>}
           handleClick={() => handleNavigate("/settings")}
         />
+      </div>}
+      <h4>PomoRoger</h4>
+      <div className="navigate-buttons">
+        {!isSmallSize && <IconButton
+          children={<CloseFullscreenRoundedIcon  sx={iconSize}/>}
+          handleClick={handleResizeSmall}
+        />}
+        {isSmallSize && <IconButton
+          children={<OpenInFullRoundedIcon  sx={iconSize}/>}
+          handleClick={handleResizeRestore}
+        />}
         <IconButton
-          children={<CloseRoundedIcon />}
+          children={<MinimizeRoundedIcon sx={iconSize}/>}
+          handleClick={handleMinimezeApp}
+        />
+        {isLargeSize && !isSmallSize && <IconButton
+          children={<FullscreenExitRoundedIcon sx={iconSize}/>}
+          handleClick={handleResizeMedium}
+        />}
+        {!isLargeSize && !isSmallSize && <IconButton
+          children={<FullscreenRoundedIcon sx={iconSize}/>}
+          handleClick={handleResizeLarge}
+        />}
+        <IconButton
+          children={<CloseRoundedIcon sx={iconSize}/>}
           handleClick={handleCloseApplication}
         />
       </div>
