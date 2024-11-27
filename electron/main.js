@@ -11,12 +11,12 @@ const createWindow = () => {
   let isDragging = false;
   let offsetX = 0;
   let offsetY = 0;
-  let oldSize = 768;
+  let oldSize = 600;
 
   try {
     const mainWindow = new BrowserWindow({
-      width: 768,
-      height: 600,
+      width: 600,
+      height: 450,
       frame: false,
       resizable: false,
       webPreferences: {
@@ -68,23 +68,23 @@ const createWindow = () => {
     });
 
     ipcMain.on("resize-large", () => {
-      const size = 768;
+      const size = 600;
       oldSize = size;
-      mainWindow.setBounds({width: size, height: 600});
+      mainWindow.setBounds({width: size, height: 450});
     });
 
     ipcMain.on("resize-medium", () => {
-      const size = 425;
+      const size = 320;
       oldSize = size;
-      mainWindow.setBounds({width: size, height: 600});
+      mainWindow.setBounds({width: size, height: 450});
     });
 
     ipcMain.on("resize-small", () => {
-      mainWindow.setBounds({width: 300, height: 200});
+      mainWindow.setBounds({width: 300, height: 150});
     });
     
     ipcMain.on("resize-restore", () => {
-      mainWindow.setBounds({width: oldSize, height: 600});
+      mainWindow.setBounds({width: oldSize, height: 450});
     });
 
     ipcMain.on("minimize-app", () => {
