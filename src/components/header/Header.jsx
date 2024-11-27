@@ -4,7 +4,6 @@ import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import IconButton from "../iconButton/iconButton";
-//Resize imports
 import CloseFullscreenRoundedIcon from "@mui/icons-material/CloseFullscreenRounded";
 import FullscreenRoundedIcon from "@mui/icons-material/FullscreenRounded";
 import FullscreenExitRoundedIcon from "@mui/icons-material/FullscreenExitRounded";
@@ -62,8 +61,7 @@ const Header = () => {
   const handleResizeRestore = () => {
     window.electron.setSizeRestore();
     setIsSmallSize(false);
-  }// It Need To Implement
-
+  }
 
   return (
     <header
@@ -85,6 +83,10 @@ const Header = () => {
       </div>}
       <h4>PomoRoger</h4>
       <div className="navigate-buttons">
+        <IconButton
+          children={<MinimizeRoundedIcon sx={iconSize}/>}
+          handleClick={handleMinimezeApp}
+        />
         {!isSmallSize && <IconButton
           children={<CloseFullscreenRoundedIcon  sx={iconSize}/>}
           handleClick={handleResizeSmall}
@@ -93,10 +95,6 @@ const Header = () => {
           children={<OpenInFullRoundedIcon  sx={iconSize}/>}
           handleClick={handleResizeRestore}
         />}
-        <IconButton
-          children={<MinimizeRoundedIcon sx={iconSize}/>}
-          handleClick={handleMinimezeApp}
-        />
         {isLargeSize && !isSmallSize && <IconButton
           children={<FullscreenExitRoundedIcon sx={iconSize}/>}
           handleClick={handleResizeMedium}
