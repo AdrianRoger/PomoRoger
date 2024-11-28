@@ -5,12 +5,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.5s ease-in-out;
 }
 
 html,
 body {
   height: 100%;
   font-family: 'Montserrat', Arial, sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 #root {
@@ -18,5 +21,4 @@ body {
   display: flex;
   max-width: 768px;
   flex-direction: column;
-  background-color: rgb(177, 177, 177);
 }
