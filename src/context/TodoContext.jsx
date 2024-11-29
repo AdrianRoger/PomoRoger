@@ -54,8 +54,10 @@ export const TodoProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToDoList = getFromLocalStorage('tasks');
-    if(storedToDoList){
+    if(storedToDoList.length > 0){
       setToDoList(storedToDoList);
+    }else{
+      setToLocalStorage('tasks', toDoList);
     }
   }, []);
 
