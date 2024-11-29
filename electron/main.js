@@ -37,6 +37,10 @@ const createWindow = () => {
       mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));
     }
 
+    mainWindow.on('resize', () => {
+      const {width, height} = mainWindow.getBounds();
+      mainWindow.webContents.send('window-resized', {width, height});
+    });
 
     ipcMain.on("start-drag", (event, clientX, clientY) => {
       // Start dragging

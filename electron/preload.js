@@ -13,4 +13,5 @@ contextBridge.exposeInMainWorld('electron', {
   setSizeSmall: () => ipcRenderer.send('resize-small'),
   setSizeRestore: () => ipcRenderer.send('resize-restore'),
   setMinimized: () => ipcRenderer.send('minimize-app'),
+  onWindowResize: (callback) => ipcRenderer.on("window-resized", (event, data) => callback(data)),
 });
