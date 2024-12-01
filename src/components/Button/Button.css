@@ -1,0 +1,15 @@
+.custom-action-btn{
+    width: fit-content;
+    height: fit-content;
+    padding: 0.2rem .3rem;
+    border: none;
+    border-radius: .2rem;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.custom-action-btn:hover{
+    transition: all .2s ease-in-out;
+    background-color: var(--yellow-color);
+    box-shadow: inset 2px -3px 9px var(--dark-yellow-color);
+}

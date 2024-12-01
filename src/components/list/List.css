@@ -1,0 +1,24 @@
+.task-list {
+  list-style: none;
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-y: scroll;
+}
+
+.task-list::-webkit-scrollbar{
+  width: .4em;
+}
+
+.task-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: var(--dark-yellow-color);
+  border-radius: 5px;
+}
+
+

@@ -1,0 +1,8 @@
+.home {
+  position: relative;
+  display: flex;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  width: 100%;
+  height: calc(100% - 31px);
+}

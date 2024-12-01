@@ -1,0 +1,61 @@
+.item{
+    background-image: linear-gradient(10deg, var(--white-color), transparent 42%);
+    padding: 2px;
+    border-radius: 0.3rem;
+    transition: all 0.1s ease-in-out;
+    width: 90%;
+}
+
+.overlay{
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.3rem;
+    background-color: var(--black-color);
+    gap: 0.3rem;
+}
+
+.item:hover{
+    background-color: var(--dark-yellow-color);
+}
+
+.task{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.task-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.task-info{
+    display: flex;
+    gap: 1rem;
+    font-size: 10px;
+    margin-left: 0.6rem;
+}
+
+.task-pomodoro-qtd,
+.task-date{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem
+}
+
+.action-btn{
+    cursor: pointer;
+    padding: 1px;
+    border: 1px solid transparent;
+    border-radius: 0.2rem;
+    box-sizing: content-box;
+}
+
+.action-btn:hover{
+    border: 1px solid var(--dark-yellow-color);
+    transition: all 0.3s ease-in-out;
+}

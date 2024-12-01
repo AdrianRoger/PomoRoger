@@ -5,6 +5,7 @@ export const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const [toDoList, setToDoList] = useState([]);
   const [toDoTimer, setToDoTimer] = useState(50);
+  const [editingTask, setEditingTask] = useState(null);
 
   const getFromLocalStorage = (key) => {
     const storedData = localStorage.getItem(key);
@@ -12,7 +13,7 @@ export const TodoProvider = ({ children }) => {
       return storedData ? JSON.parse(storedData) : null;
     } catch (error) {
       console.error(`Erro ao analisar JSON do localStorage para a chave "${key}":`, error);
-      return null; // Retorna um valor padrão seguro
+      return null;
     }
   }
 
@@ -31,8 +32,8 @@ export const TodoProvider = ({ children }) => {
     setToDoList((prev) => [...prev, newtask]);
   };
 
-  const updateTask = ({ id, taskName, taskDt, pomodoroQtd }) => {
-    const updatedTask = { id, taskName, taskDt, pomodoroQtd };
+  const updateTask = (editingTask) => {
+    const updatedTask = editingTask;
     setToDoList((prev) =>
       prev.map((task) => (task.id === updatedTask.id ? updatedTask : task))
     );
@@ -54,10 +55,10 @@ export const TodoProvider = ({ children }) => {
 
   useEffect(() => {
     const storedToDoList = getFromLocalStorage('tasks');
-    if(storedToDoList.length > 0){
-      setToDoList(storedToDoList);
-    }else{
+    if(!storedToDoList || storedToDoList.length === 0){
       setToLocalStorage('tasks', toDoList);
+    }else{
+      setToDoList(storedToDoList);
     }
   }, []);
 
@@ -74,6 +75,8 @@ export const TodoProvider = ({ children }) => {
         deleteTask,
         toDoTimer,
         handlerToDoTimer,
+        editingTask,
+        setEditingTask
       }}
     >
       {children}

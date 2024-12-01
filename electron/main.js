@@ -31,7 +31,7 @@ const createWindow = () => {
     Menu.setApplicationMenu(null);
 
     if (process.env.NODE_ENV === "development") {
-      // mainWindow.webContents.openDevTools();
+      mainWindow.webContents.openDevTools();
       mainWindow.loadURL("http://localhost:5173");
     } else {
       mainWindow.loadFile(path.join(__dirname, "../dist/index.html"));

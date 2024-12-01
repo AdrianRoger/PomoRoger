@@ -4,9 +4,7 @@
   align-items: center;
   padding: 0.3rem 0.2rem 0.3rem 0.5rem;
   background-image: linear-gradient(
-    to bottom,
-    rgb(236, 195, 11),
-    rgb(151, 118, 27)
+    to bottom,var(--yellow-color), var(--dark-yellow-color)
   );
   user-select: none;
   -webkit-app-region: drag;
