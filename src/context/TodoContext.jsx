@@ -6,6 +6,7 @@ export const TodoProvider = ({ children }) => {
   const [toDoList, setToDoList] = useState([]);
   const [toDoTimer, setToDoTimer] = useState(50);
   const [editingTask, setEditingTask] = useState(null);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   const getFromLocalStorage = (key) => {
     const storedData = localStorage.getItem(key);
@@ -76,7 +77,9 @@ export const TodoProvider = ({ children }) => {
         toDoTimer,
         handlerToDoTimer,
         editingTask,
-        setEditingTask
+        setEditingTask,
+        taskToDelete,
+        setTaskToDelete
       }}
     >
       {children}

@@ -81,7 +81,7 @@ const Header = () => {
           handleClick={() => handleNavigate("/settings")}
         />
       </div>}
-      <h4>PomoRoger</h4>
+      <h4 className="pomoroger">PomoRoger</h4>
       <div className="navigate-buttons">
         <IconButton
           children={<MinimizeRoundedIcon sx={iconSize}/>}

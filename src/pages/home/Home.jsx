@@ -9,7 +9,7 @@ import "./Home.css";
 
 const Home = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { toDoList, deletetask, editingTask, setEditingTask } = useContext(TodoContext);
+  const { toDoList, setEditingTask } = useContext(TodoContext);
   // const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +36,6 @@ const Home = () => {
                     key={index}
                     data={task}
                     handleEdit={() => handleEdit(task)}
-                    handleDelete={deletetask} //update info here
                   />
                 ))}
               </>

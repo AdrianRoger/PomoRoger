@@ -1,13 +1,16 @@
 import "./ListItem.css";
+import React, { useContext } from 'react';
+import { TodoContext } from "../../context/TodoContext";
 import AccessAlarmRoundedIcon from "@mui/icons-material/AccessAlarmRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-//{ id, taskName, taskDt, pomodoroQtd }
 
-const ListItem = ({ data, handleEdit, handleDelete}) => {
+const ListItem = ({ data, handleEdit }) => {
   const iconSize = { fontSize: "11px" };
   const actionIconSize = { fontSize: "16px"};
+
+  const { setTaskToDelete } = useContext(TodoContext);
   
   return (
     <>
@@ -30,7 +33,9 @@ const ListItem = ({ data, handleEdit, handleDelete}) => {
           <DeleteForeverRoundedIcon
             className="color-btn action-btn"
             sx={actionIconSize}
-            onClick={handleDelete} //need to update
+            onClick={() => {
+              setTaskToDelete(data);
+            }}
           />
         </div>
       </div>
