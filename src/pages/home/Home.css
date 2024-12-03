@@ -6,3 +6,11 @@
   width: 100%;
   height: calc(100% - 31px);
 }
+
+.no-task{
+  /* background-color: wheat; */
+  width: 90%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
