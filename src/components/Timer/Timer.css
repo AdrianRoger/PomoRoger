@@ -1,0 +1,25 @@
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg{
+    width: 30vh;
+}
+
+.circle-background{
+    fill: none;
+    stroke: #a7a7a79d;
+}
+
+.circle-progress{
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.timer-text{
+    font-size: 35px;
+    fill: var(--dark-yellow-color);
+}
