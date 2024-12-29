@@ -16,10 +16,10 @@ const Timer = ({ circleWidth, progress = 59 }) => {
       >
         <defs>
           <linearGradient id="gradient">
-            <stop offset="0%" stop-color="var(--yellow-color)" />
-            <stop offset="33%" stop-color="var(--dark-yellow-color)" />
-            <stop offset="66%" stop-color="var(--yellow-color)" />
-            <stop offset="100%" stop-color="var(--dark-yellow-color)" />
+            <stop offset="0%" stopColor="var(--yellow-color)" />
+            <stop offset="33%" stopColor="var(--dark-yellow-color)" />
+            <stop offset="66%" stopColor="var(--yellow-color)" />
+            <stop offset="100%" stopColor="var(--dark-yellow-color)" />
           </linearGradient>
         </defs>
         <circle

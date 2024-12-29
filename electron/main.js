@@ -23,8 +23,10 @@ const createWindow = () => {
       webPreferences: {
         preload: path.join(__dirname, "preload.js"),
         contextIsolation: true,
-        nodeIntegration: false,
+        devTools: process.env.NODE_ENV === 'development',
         enableRemoteModule: false,
+        experimentalFeatures: process.env.NODE_ENV === 'development',
+        nodeIntegration: false,
       },
     });
 
