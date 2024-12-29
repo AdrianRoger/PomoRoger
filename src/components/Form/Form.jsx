@@ -8,7 +8,7 @@ const Form = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     taskName: "",
     taskDt: "",
-    pomodoroQtd: 1,
+    pomodoroQtd: "",
   });
 
   const { editingTask } = useContext(TodoContext)
@@ -37,11 +37,15 @@ const Form = ({ onSubmit }) => {
       />
       <InputField
         label="Task Date"
+        type="date"
         value={formData.taskDt}
         onChange={(value) => handleChange("taskDt", value)}
       />
       <InputField
         label="Pomodoro Amount"
+        type="number"
+        min={1}
+        max={10}
         value={formData.pomodoroQtd}
         onChange={(value) => handleChange("pomodoroQtd", value)}
       />

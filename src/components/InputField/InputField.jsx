@@ -1,6 +1,6 @@
 import "./InputField.css";
 
-const InputField = ({ label, value, onChange }) => {
+const InputField = ({ label, value, onChange, type = "text", min, max }) => {
   const handleInputChange = (e) => {
     onChange(e.target.value);
   };
@@ -9,13 +9,15 @@ const InputField = ({ label, value, onChange }) => {
     <div className="input-group">
       <input
         className="input"
-        type="text"
+        placeholder=" "
+        type={type}
         value={value}
         autoComplete="off"
         onChange={handleInputChange}
+        {...(type === "number" && { min, max })}
         required
       />
-      <label className="input-label">{label}</label>
+      <label className={type !== "date" ? "input-label" : "input-label date"}>{label}</label>
     </div>
   );
 };
