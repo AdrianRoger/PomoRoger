@@ -10,14 +10,19 @@ const ListItem = ({ data, handleEdit }) => {
   const iconSize = { fontSize: "11px" };
   const actionIconSize = { fontSize: "16px"};
 
-  const { setTaskToDelete } = useContext(TodoContext);
+  const { setTaskToDelete, updateTask } = useContext(TodoContext);
+
+  const handleChange = (e) => {
+    updateTask({ ...data, status: e.target.checked });
+  };
   
   return (
     <>
       <div className="item">
         <div className="overlay">
+          <input type="checkbox" checked={data.status} onChange={handleChange}></input>
           <div className="task">
-            <dt className="task-name">{data.taskName}</dt>
+            <dt className={data.status ? "task-name done" : "task-name"}>{data.taskName}</dt>
             <dd className="task-info">
               <span className="task-pomodoro-qtd">
                 <AccessAlarmRoundedIcon sx={iconSize} />

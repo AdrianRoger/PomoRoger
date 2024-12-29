@@ -33,6 +33,10 @@
     font-size: 14px;
 }
 
+.done{
+    text-decoration: line-through;
+}
+
 .task-info{
     display: flex;
     gap: 1rem;
