@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
 import { TodoContext } from "../../context/TodoContext";
+import { WindowSizeContext } from "../../context/WindowSizeContext";
 import List from "../../components/list/List";
 import ListItem from "../../components/listItem/ListItem";
 import ListContainer from "../../components/listContainer/ListContainer";
@@ -10,18 +10,8 @@ import "./Home.css";
 import Timer from "../../components/Timer/Timer";
 
 const Home = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { toDoList, setEditingTask } = useContext(TodoContext);
-  // const navigate = useNavigate();
-
-  useEffect(() => {
-    window.electron.onWindowResize(({ width }) => {
-      setWindowWidth(width);
-    });
-    return () => {
-      window.electron.onWindowResize(() => {});
-    };
-  }, []);
+  const { windowWidth } = useContext(WindowSizeContext);
 
   const handleEdit = (task) => {
     setEditingTask(task);
