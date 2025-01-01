@@ -6,6 +6,10 @@
     width: 90%;
 }
 
+.selected{
+    background-color: blueviolet;
+}
+
 .overlay{
     display: flex;
     align-items: center;
