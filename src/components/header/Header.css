@@ -8,6 +8,7 @@
   );
   user-select: none;
   -webkit-app-region: drag;
+  z-index: 1;
 }
 
 .navigate-buttons {
