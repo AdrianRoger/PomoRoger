@@ -15,6 +15,9 @@ const ListItem = ({ data, handleEdit }) => {
 
   const handleChange = (e) => {
     updateTask({ ...data, status: e.target.checked });
+    if(selectedTask?.id === data.id && e.target.checked){
+      handleSelectedTask(null);
+    }
   };
 
   const toggleSelectedTask = (e) => {
@@ -23,7 +26,7 @@ const ListItem = ({ data, handleEdit }) => {
     if (ignoredTagNames.some((tag) => e.target.tagName === tag)) return;
     if (data.id === selectedTask?.id) return;
 
-    handleSelectedTask(data);
+    if(data.status === false) handleSelectedTask(data);
   };
 
   return (
