@@ -11,10 +11,8 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 
 const ListContainer = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [menuView, setMenuView] = useState(false);
   const [open, setOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
   
   const {
     addTask,
@@ -39,19 +37,13 @@ const ListContainer = ({ children }) => {
     setEditingTask(null);
   };
 
-  const openDeleteModal = () => {
-    setShowDeleteModal(true);
-  };
-
   const handleDelete = (task) => {
     deleteTask(task.id);
     setTaskToDelete(null);
-    setShowDeleteModal(false);
   };
 
   const handleCancelDelete = () => {
     setTaskToDelete(null);
-    setShowDeleteModal(false);
   };
 
   const handleModalAction = (data) => {
@@ -72,13 +64,9 @@ const ListContainer = ({ children }) => {
   useEffect(() => {
     window.electron.onWindowResize(({ width }) => {
       setWindowWidth(width);
-      if (width === 320) {
-        setOpen(false);
-        setMenuView(true);
-      } else {
-        setMenuView(false);
-      }
+      setOpen(false);
     });
+
     return () => {
       window.electron.onWindowResize(() => {});
     };
@@ -93,18 +81,18 @@ const ListContainer = ({ children }) => {
   return (
     <div className={containerClass}>
       <Button label="+" onClick={handleOpenModal} />
-      {menuView && open && (
+      {windowWidth === 320 && open && (
         <MenuOpenRoundedIcon
           className="color-btn list-menu-close"
           onClick={handleOpenMenu}
         />
       )}
-      {menuView && !open && (
+      {(windowWidth === 320 && !open) && 
         <MenuRoundedIcon
           className="color-btn list-menu-open"
           onClick={handleOpenMenu}
         />
-      )}
+      }
       {children}
       {showModal && (
         <Modal handleClose={handleCloseModal}>
