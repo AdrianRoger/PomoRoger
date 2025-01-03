@@ -5,9 +5,9 @@ export const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const [toDoList, setToDoList] = useState([]);
   const [toDoTime, setToDoTime] = useState({
-    time: 50,
-    shortBreak: 10,
-    longBreak: 25,
+    work: 25,
+    shortBreak: 5,
+    longBreak: 10,
   });
   const [editingTask, setEditingTask] = useState(null);
   const [taskToDelete, setTaskToDelete] = useState(null);
@@ -53,17 +53,19 @@ export const TodoProvider = ({ children }) => {
   };
 
   const deleteTask = (id) => {
+    if(selectedTask && selectedTask.id === id){
+      setSelectedTask(null);
+    }
     setToDoList((prev) => prev.filter((task) => task.id !== id));
   };
 
   useEffect(() => {
     const time = getFromLocalStorage("time");
-    if (!time || isNaN(time) || time < 1) {
+    if (!time || Object.values(time).some(value => value < 1)) {
       setToLocalStorage("time", toDoTime);
       return;
     }
-
-    setToDoTime(Number(time));
+    setToDoTime(time);
   }, []);
 
   useEffect(() => {
