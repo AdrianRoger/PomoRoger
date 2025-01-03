@@ -30,9 +30,13 @@ export const TodoProvider = ({ children }) => {
     localStorage.setItem(key, JSON.stringify(value));
   };
 
-  const handlerToDoTime = (time) => {
-    setToDoTime(time);
-    setToLocalStorage("time", time);
+  const handleToDoTime = (toDoTime) => {
+    if(typeof toDoTime === 'object' && toDoTime !== null) {
+      setToDoTime(toDoTime);
+      setToLocalStorage("time", toDoTime);
+    }else{
+      console.error(`Invalid settings format: {"work": number, "shortBreak": number, "longBreak": number}`);
+    }
   };
 
   const handleSelectedTask = (task) => {
@@ -89,7 +93,7 @@ export const TodoProvider = ({ children }) => {
         updateTask,
         deleteTask,
         toDoTime,
-        handlerToDoTime,
+        handleToDoTime,
         editingTask,
         setEditingTask,
         taskToDelete,
