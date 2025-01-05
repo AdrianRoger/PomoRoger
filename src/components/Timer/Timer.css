@@ -65,6 +65,17 @@
   }
 }
 
+.audio-control{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.mute-control {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
 @media (max-width: 300px) {
   .selected-task {
     transform: translateY(-15px);
