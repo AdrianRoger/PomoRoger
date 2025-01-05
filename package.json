@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {"name": "Adrian Roger"},
   "scripts": {
     "dev": "concurrently \"npm run vite\" \"npm run electron\"",
     "vite": "vite",
@@ -21,7 +22,8 @@
     "dotenv": "16.4.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "7.1.1"
+    "react-router-dom": "7.1.1",
+    "react-slider": "^2.0.6"
   },
   "devDependencies": {
     "@eslint/js": "9.17.0",

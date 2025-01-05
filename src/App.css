@@ -42,7 +42,7 @@ h6 {
   display: flex;
   max-width: 768px;
   flex-direction: column;
-  background-color: darkblue;
+  background-color: var(--black-color);
 }
 
 .color-btn{
